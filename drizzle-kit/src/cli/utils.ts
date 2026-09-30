@@ -57,7 +57,9 @@ export const assertEitherPackage = async (
 			const it = pkgs[i];
 			await import(it);
 			availables.push(it);
-		} catch (e) {}
+		} catch (e) {
+			console.error(`Failed to import package '${pkgs[i]}':`, e);
+		}
 	}
 
 	if (availables.length > 0) {
